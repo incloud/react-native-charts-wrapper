@@ -457,6 +457,15 @@ open class RNChartViewBase: UIView, ChartViewDelegate {
     func setHighlights(_ config: NSArray) {
         chart.highlightValues(HighlightUtils.getHighlights(config))
     }
+
+    func setDrawBackgroundRanges(_ drawBackgroundRanges: Bool) {
+        chart.drawBackgroundRanges = drawBackgroundRanges
+    }
+
+    func setBackgroundRanges(_ config: NSArray) {
+        chart.backgroundRanges(BackgroundRangeUtils.getBackgroundRanges(config))
+    }
+
     
     @objc public func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
         

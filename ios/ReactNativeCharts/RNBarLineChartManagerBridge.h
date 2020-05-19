@@ -10,6 +10,7 @@ EXPORT_Y_AXIS_CHART_BASE_PROPERTIES \
 RCT_EXPORT_VIEW_PROPERTY(drawGridBackground, BOOL) \
 RCT_EXPORT_VIEW_PROPERTY(maxHighlightDistance, CGFloat) \
 RCT_EXPORT_VIEW_PROPERTY(gridBackgroundColor, NSInteger) \
+RCT_EXPORT_VIEW_PROPERTY(drawBackgroundRanges, BOOL) \
 RCT_EXPORT_VIEW_PROPERTY(drawBorders, BOOL) \
 RCT_EXPORT_VIEW_PROPERTY(borderColor, NSInteger) \
 RCT_EXPORT_VIEW_PROPERTY(borderWidth, CGFloat) \
@@ -33,6 +34,7 @@ RCT_EXTERN_METHOD(moveViewToAnimated:(nonnull NSNumber *)node xValue:(nonnull NS
 RCT_EXTERN_METHOD(centerViewTo:(nonnull NSNumber *)node xValue:(nonnull NSNumber *)xValue yValue:(nonnull NSNumber *)yValue axisDependency:(nonnull NSString *)axisDependency) \
 RCT_EXTERN_METHOD(centerViewToAnimated:(nonnull NSNumber *)node xValue:(nonnull NSNumber *)xValue yValue:(nonnull NSNumber *)yValue axisDependency:(nonnull NSString *)axisDependency duration:(nonnull NSNumber *)duration) \
 RCT_EXTERN_METHOD(highlights:(nonnull NSNumber *)node config:(nonnull NSArray *)config) \
+RCT_EXTERN_METHOD(backgroundRanges:(nonnull NSNumber *)node config:(nonnull NSArray *)config) \
 RCT_EXTERN_METHOD(fitScreen:(nonnull NSNumber *)node) \
 RCT_EXTERN_METHOD(setDataAndLockIndex:(nonnull NSNumber *)node data:(nonnull NSDictionary *)data)
 #endif /* RNBarLineChartManagerBridge_h */
