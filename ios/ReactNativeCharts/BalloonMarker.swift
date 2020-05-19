@@ -43,7 +43,10 @@ open class BalloonMarker: MarkerView {
         self.textColor = textColor
 
         _paragraphStyle = NSParagraphStyle.default.mutableCopy() as? NSMutableParagraphStyle
-        _paragraphStyle?.alignment = .center
+        // Changed to .left
+        _paragraphStyle?.alignment = .left
+        _paragraphStyle?.firstLineHeadIndent = 4
+        _paragraphStyle?.headIndent = 4
     }
 
     public required init?(coder aDecoder: NSCoder) {
