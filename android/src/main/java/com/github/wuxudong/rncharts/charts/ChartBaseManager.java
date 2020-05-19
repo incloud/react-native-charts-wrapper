@@ -23,6 +23,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.LargeValueFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.background.BackgroundRange;
 import com.github.wuxudong.rncharts.data.DataExtract;
 import com.github.wuxudong.rncharts.markers.RNRectangleMarkerView;
 import com.github.wuxudong.rncharts.utils.BridgeUtils;
@@ -45,6 +46,7 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
     protected static final int HIGHLIGHTS = 8;
 
     protected static final int SET_DATA_AND_LOCK_INDEX = 9;
+    protected static final int BACKGROUND_RANGES = 10;
 
     abstract DataExtract getDataExtract();
 
@@ -500,6 +502,34 @@ public abstract class ChartBaseManager<T extends Chart, U extends Entry> extends
         }
 
         chart.highlightValues(highlights.toArray(new Highlight[highlights.size()]));
+    }
+
+    @ReactProp(name = "backgroundRanges")
+    public void setBackgroundRanges(T chart, ReadableArray array) {
+        List<BackgroundRange> ranges = new ArrayList<>();
+
+        for (int i = 0; i < array.size(); i++) {
+            if (!ReadableType.Map.equals(array.getType(i))) {
+                continue;
+            }
+
+            ReadableMap rangeMap = array.getMap(i);
+
+            if (BridgeUtils.validate(rangeMap, ReadableType.Number, "color") && BridgeUtils.validate(rangeMap, ReadableType.Number, "lowerThreshold") && BridgeUtils.validate(rangeMap, ReadableType.Number, "higherThreshold")) {
+
+                int color = rangeMap.getInt("color");
+
+                float lowerThreshold = (float) rangeMap.getDouble("lowerThreshold");
+
+                float higherThreshold = (float) rangeMap.getDouble("higherThreshold");
+
+                BackgroundRange r = new BackgroundRange(color, lowerThreshold, higherThreshold);
+            
+                ranges.add(r);
+            }
+        }
+
+        chart.backgroundRanges(ranges.toArray(new BackgroundRange[ranges.size()]));
     }
 
     protected void onAfterDataSetChanged(T chart) {

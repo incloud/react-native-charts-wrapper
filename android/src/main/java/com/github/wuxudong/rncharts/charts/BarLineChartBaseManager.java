@@ -78,6 +78,11 @@ public abstract class BarLineChartBaseManager<T extends BarLineChartBase, U exte
         chart.setDrawGridBackground(enabled);
     }
 
+    @ReactProp(name = "drawBackgroundRanges")
+    public void setDrawBackgroundRanges(BarLineChartBase chart, boolean enabled) {
+        chart.setDrawBackgroundRanges(enabled);
+    }
+
     @ReactProp(name = "gridBackgroundColor")
     public void setGridBackgroundColor(BarLineChartBase chart, Integer color) {
         chart.setGridBackgroundColor(color);
@@ -287,7 +292,8 @@ public abstract class BarLineChartBaseManager<T extends BarLineChartBase, U exte
                 "moveViewToAnimated", MOVE_VIEW_TO_ANIMATED,
                 "fitScreen", FIT_SCREEN,
                 "highlights", HIGHLIGHTS,
-                "setDataAndLockIndex", SET_DATA_AND_LOCK_INDEX);
+                "setDataAndLockIndex", SET_DATA_AND_LOCK_INDEX,
+                "backgroundRanges", BACKGROUND_RANGES);
 
         if (commandsMap != null) {
             map.putAll(commandsMap);
@@ -329,6 +335,10 @@ public abstract class BarLineChartBaseManager<T extends BarLineChartBase, U exte
             case SET_DATA_AND_LOCK_INDEX:
                 setDataAndLockIndex(root, args.getMap(0));
                 return;
+
+            case BACKGROUND_RANGES:
+                this.setBackgroundRanges(root, args.getArray(0));
+                return;    
         }
 
         super.receiveCommand(root, commandId, args);
