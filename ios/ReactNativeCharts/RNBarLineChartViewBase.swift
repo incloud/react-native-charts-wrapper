@@ -184,10 +184,11 @@ class RNBarLineChartViewBase: RNYAxisChartViewBase {
     override func onAfterDataSetChanged() {
         super.onAfterDataSetChanged()
 
+        barLineChart.setVisibleYRange(minYRange: 1.0, maxYRange: 1.4, axis: YAxis.AxisDependency.left)
+
         // clear zoom after applied, but keep visibleRange
         if let visibleRange = savedVisibleRange {
             updateVisibleRange(visibleRange)
-            barLineChart.setVisibleYRange(minYRange: 1.0, maxYRange: 1.0, axis: YAxis.AxisDependency.left)
         }
 
         if let zoom = savedZoom {
