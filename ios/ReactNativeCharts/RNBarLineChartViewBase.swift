@@ -189,7 +189,7 @@ class RNBarLineChartViewBase: RNYAxisChartViewBase {
             updateVisibleRange(visibleRange)
         }
 
-        barLineChart.setVisibleYRange(1.0, 1.0, axis: YAxis.AxisDependency.left)
+        barLineChart.setVisibleYRange(minYRange: 1.0, maxYRange: 1.0, axis: YAxis.AxisDependency.left)
 
         if let zoom = savedZoom {
             updateZoom(zoom)
