@@ -217,7 +217,7 @@ class RNBarLineChartViewBase: RNYAxisChartViewBase {
         let newVisibleYRange = getVisibleYRange(axis)
 
         let scaleX = newVisibleXRange / originalVisibleXRange
-        let scaleY = 1.0//newVisibleYRange / originalVisibleYRange
+        let scaleY = newVisibleYRange / originalVisibleYRange
 
         // in iOS Charts chart.zoom scaleX: CGFloat, scaleY: CGFloat, xValue: Double, yValue: Double, axis: YAxis.AxisDependency)
         // the scale is absolute scale, it will overwrite touchMatrix scale directly
